@@ -6,6 +6,6 @@ authorTwitter = "" #do not include @
 cover = ""
 tags = ["", ""]
 keywords = ["", ""]
-description = "The begining of the begining"
+description = "The beginning of the beginning"
 showFullContent = false
 +++
