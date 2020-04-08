@@ -22,7 +22,9 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: crazy-max/ghaction-github-pages@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}      
-          publish_dir: ./public
+          target_branch: master
+          build_dir: ./public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
