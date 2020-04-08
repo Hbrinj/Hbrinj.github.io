@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "hbrinj.github.io"
 languageCode = "en-us"
 title = "A look of introspection"
 theme = "terminal"
