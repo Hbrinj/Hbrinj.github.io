@@ -1,0 +1,28 @@
+:root {
+    --footer-text-primary: #999999
+}
+
+.footer img, .copyright {
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+.footer img {
+    width: 30%;
+    height: 30%;
+}
+
+.copyright{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.copyright span {
+    color: var(--footer-text-primary);
+}
+
+.footer .copyright :not(:only-child) {
+    margin-right: 10px;
+}
