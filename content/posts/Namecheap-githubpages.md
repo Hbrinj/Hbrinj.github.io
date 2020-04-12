@@ -10,7 +10,7 @@ description = "Creating DNS records to utilise a custom domain with github pages
 showFullContent = false
 +++
 
-Name cheap as the name suggests provides cheap names, in particular they provide domain names like the one this website is using. This site may or may not be on Github anymore when you the readers are reading this, but in its inception I went for the quick and dirty route and utilised Github Pages.
+Namecheap as the name suggests provides cheap names, in particular they provide domain names like the one this website is using. This site may or may not be on Github anymore when you the readers are reading this, but in its inception I went for the quick and dirty route and utilised Github Pages.
 
 To point your domain to your Github Pages domain, follow this [Namecheap domain with github pages tutorial](https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages).
 
