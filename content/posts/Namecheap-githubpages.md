@@ -1,6 +1,6 @@
 +++
 title = "Integrating Namecheap and Github Pages"
-date = ""
+date = "2020-03-12"
 author = "Houman"
 authorTwitter = "" #do not include @
 cover = ""
