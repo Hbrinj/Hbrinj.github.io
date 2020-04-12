@@ -21,6 +21,10 @@ jobs:
       - name: Build
         run: hugo --minify
 
+      - name: CNAME
+        run: |
+          echo "houman.codes" > ./public/CNAME
+
       - name: Deploy
         uses: crazy-max/ghaction-github-pages@v1
         with:
