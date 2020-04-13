@@ -14,9 +14,9 @@ Namecheap as the name suggests provides cheap names, in particular they provide 
 
 To point your domain to your GitHub Pages domain, follow this [Namecheap domain with GitHub pages tutorial](https://www.namecheap.com/support/knowledgebase/article.aspx/9645/2208/how-do-i-link-my-domain-to-github-pages).
 
-{{< image src="/img/blog/NamecheapAndGithubPages/g-pages-apr-12-2020.png" alt="logo" >}}
+{{< figure src="/img/blog/NamecheapAndGithubPages/g-pages-apr-12-2020.png" caption="GitHub pages configuration for Houman.codes" >}}
 
-Once you have pointed your domain to GitHub you will need to open your GitHub repo, got to settings, scroll down until you see `GitHub Pages` and point the custom domain to your website, in my case its `Houman.codes`. This step will automatically create a `CNAME` file in either the `gh-pages` or `master` branches, if this file disappears so will the link between your domain and GitHub hosted webpage.
+Once you have pointed your domain to GitHub you will need to open your GitHub repo, got to settings, scroll down until you see `GitHub Pages` and point the custom domain to your website, in my case its `Houman.codes`. This step will automatically create a `CNAME` file in either the `gh-pages` or `master` branches, if this file disappears so will the link between your domain and GitHub hosted web page.
 
 You will have to wait at least 24 hours before you have the option to enforce HTTPS, during this time GitHub will utilise LetsEncrypt to generate a signed Certificate on behalf of your website. Just come back later and tick the option when its available.
 

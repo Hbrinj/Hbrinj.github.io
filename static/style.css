@@ -1,5 +1,6 @@
 :root {
-    --footer-text-primary: #999999
+    --footer-text-primary: #999999;
+    --corner-radius: 3%;
 }
 
 .footer img, .copyright {
@@ -25,4 +26,18 @@
 
 .footer .copyright :not(:only-child) {
     margin-right: 10px;
+}
+
+img {
+  border-radius: var(--corner-radius);
+}
+
+.image, .figure {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+figure figcaption {
+  background: none;
+  color: var(--footer-text-primary);
 }
