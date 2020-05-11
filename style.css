@@ -1,0 +1,43 @@
+:root {
+    --footer-text-primary: #999999;
+    --corner-radius: 3%;
+}
+
+.footer img, .copyright {
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+.footer img {
+    width: 30%;
+    height: 30%;
+}
+
+.copyright{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.copyright span {
+    color: var(--footer-text-primary);
+}
+
+.footer .copyright :not(:only-child) {
+    margin-right: 10px;
+}
+
+img {
+  border-radius: var(--corner-radius);
+}
+
+.image, .figure {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+figure figcaption {
+  background: none;
+  color: var(--footer-text-primary);
+}

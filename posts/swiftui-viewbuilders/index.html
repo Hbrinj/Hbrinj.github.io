@@ -1,0 +1,37 @@
+<!doctype html><html lang=en><head><title>SwiftUI Super Powered - ViewBuilders :: A Look of Introspection — A place where information is collected</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><meta name=description content="The Problem How can a View be augmented with new properties without having a knock on effect, changing all other uses of said view?
+The solution ViewBuilders, a parameter attribute which allows you to supplement an existing view by capturing it as a view producing closure. The example we&amp;rsquo;ll work with today is the concept of turning an existing view, used to represent a row in a List view, into a view which displays where it has been selected."><meta name=keywords content=","><meta name=robots content="noodp"><link rel=canonical href=https://hbrinj.github.io/posts/swiftui-viewbuilders/><link rel=stylesheet href=https://hbrinj.github.io/assets/style.css><link rel=stylesheet href=https://hbrinj.github.io/style.css><link rel=apple-touch-icon-precomposed sizes=144x144 href=https://hbrinj.github.io/img/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=https://hbrinj.github.io/img/favicon/orange.png><meta name=twitter:card content="summary"><meta name=twitter:creator content><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="og:title" content="SwiftUI Super Powered - ViewBuilders :: A Look of Introspection"><meta property="og:description" content="How SwiftUI ViewBuilders can clean up your Views and abstract away content"><meta property="og:url" content="https://hbrinj.github.io/posts/swiftui-viewbuilders/"><meta property="og:site_name" content="SwiftUI Super Powered - ViewBuilders"><meta property="og:image" content="https://hbrinj.github.io"><meta property="og:image:width" content="2048"><meta property="og:image:height" content="1024"><meta property="article:published_time" content="2020-05-10 00:00:00 +0000 UTC"></head><body><div class="container center headings--one-size"><header class=header><div class=header__inner><div class=header__logo><a href=/><div class=logo>A Look of Introspection</div></a></div><div class=menu-trigger>menu</div></div><nav class=menu><ul class="menu__inner menu__inner--desktop"><li><a href=/about>About</a></li><li><a href=/showcase>Showcase</a></li></ul><ul class="menu__inner menu__inner--mobile"><li><a href=/about>About</a></li><li><a href=/showcase>Showcase</a></li></ul></nav></header><div class=content><div class=post><h1 class=post-title><a href=https://hbrinj.github.io/posts/swiftui-viewbuilders/>SwiftUI Super Powered - ViewBuilders</a></h1><div class=post-meta><span class=post-date>2020-05-10</span>
+<span class=post-author>::
+Houman</span></div><span class=post-tags>#<a href=https://hbrinj.github.io/tags/swiftui/>SwiftUI</a>&nbsp;
+#<a href=https://hbrinj.github.io/tags/super/>Super</a>&nbsp;
+#<a href=https://hbrinj.github.io/tags/power/>Power</a>&nbsp;
+#<a href=https://hbrinj.github.io/tags/viewbuilder/>ViewBuilder</a>&nbsp;</span><div class=post-content><div><h1 id=the-problem>The Problem<a href=#the-problem class=hanchor arialabel=Anchor>&#8983;</a></h1><p>How can a View be augmented with new properties without having a knock on effect, changing all other uses of said view?</p><h1 id=the-solution>The solution<a href=#the-solution class=hanchor arialabel=Anchor>&#8983;</a></h1><p>ViewBuilders, a parameter attribute which allows you to supplement an existing view by capturing it as a view producing closure. The example we&rsquo;ll work with today is the concept of turning an existing view, used to represent a row in a List view, into a view which displays where it has been selected. All of which without changing the original functionality. This is an example of the <a href=https://www.baeldung.com/java-decorator-pattern>Decorator pattern</a> realised through ViewBuilders.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>CheckableRow</span>&lt;Content: View&gt; : View {
+  <span style=color:#66d9ef>private</span> <span style=color:#66d9ef>let</span> content: Content
+  @State <span style=color:#66d9ef>let</span> checked: Bool = <span style=color:#66d9ef>false</span>
+  <span style=color:#66d9ef>init</span>(@ViewBuilder content: () -&gt; Content) {
+    <span style=color:#66d9ef>self</span>.content = content()
+  }
+
+  <span style=color:#66d9ef>var</span> body: some View {
+    Button(action: { <span style=color:#66d9ef>self</span>.checked.toggle }) {
+      Image(systemName:  <span style=color:#66d9ef>self</span>.checked ? <span style=color:#e6db74>&#34;checkmark.circle.fill&#34;</span> : <span style=color:#e6db74>&#34;circle&#34;</span>)
+    }
+    Spacer()
+    content
+  }
+}
+</code></pre></div><p>The snippet above allows you to accept a closure as a parameter that evaluates into a view. You&rsquo;ll also notice how our struct implements the View Protocol, containing a public variable body. This allows the SwiftUI subsystem to consider our changes as just another part of the view heirarchy during the View initialisation.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-swift data-lang=swift><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>MainView</span>: View {
+  <span style=color:#66d9ef>var</span> body: some View {
+    VStack {
+      List(rows()) {
+        item <span style=color:#66d9ef>in</span>
+        CheckableRow {
+          RowView(item: item)
+        }
+      }
+    }  
+  }
+}
+</code></pre></div><p>Above is a slightly contrived example, but it highlights how powerful ViewBuilders are in providing the ability to augment existing views, increasing reusability.</p></div></div><div class=pagination><div class=pagination__title><span class=pagination__title-h>Read other posts</span><hr></div><div class=pagination__buttons><span class="button next"><a href=https://hbrinj.github.io/posts/swiftuipowered/><span class=button__text>SwiftUI Super Powered</span>
+<span class=button__icon>→</span></a></span></div></div></div></div><footer class=footer><img src=https://hbrinj.github.io/img/logo.png><div class=footer__inner><div class=copyright><span>© 2020 Powered by <a href=http://gohugo.io>Hugo</a></span>
+<span>:: Theme made by <a href=https://twitter.com/panr>panr</a></span>
+<span>:: Butchered by <a href=https://twitter.com/houmanB>Houman</a></span></div></div></footer><script src=https://hbrinj.github.io/assets/main.js></script><script src=https://hbrinj.github.io/assets/prism.js></script></div></body></html>
