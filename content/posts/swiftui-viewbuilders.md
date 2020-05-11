@@ -53,4 +53,4 @@ struct MainView: View {
 }
 ```
 
-Above is a slightly contrived example, whereby we take a row view and make it a selectable row, decorating its functionality without changing the object. This lets us add on additional functionality without changing `RowView` which would need to be updated everywhere else it is used.
+Above is a slightly contrived example, but it highlights how powerful ViewBuilders are in providing the ability to augment existing views, increasing reusability.
